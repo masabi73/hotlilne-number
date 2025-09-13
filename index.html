@@ -56,11 +56,11 @@
     </header>
 
     <!-- Main Section -->
-    <!-- <main
+    <main
       class="w-full sm:w-11/12 mx-auto mt-6 flex flex-col-reverse sm:flex-row gap-4"
     >
       <!-- Cards -->
-       <section
+      <section
         class="w-full sm:w-3/4 grid grid-cols-1 sm:grid-cols-3 gap-4 p-4"
       >
         <div class="card p-5 rounded-lg bg-white shadow-md">
@@ -254,7 +254,8 @@
             <i
               class="fa-regular fa-heart heart-icon text-xl cursor-pointer"
             ></i>
-          </div>          <div class="mt-4">
+          </div>
+          <div class="mt-4">
             <h1 class="service-name font-bold text-lg">Electricity Helpline</h1>
             <p class="text-gray-500">Electricity Outage</p>
             <h1 class="service-number text-xl font-bold mt-2">16216</h1>
@@ -354,89 +355,87 @@
         </div>
         <div id="history-list" class="mt-4 space-y-3 text-sm"></div>
       </section>
-    </main> -->
+    </main>
 
     <!-- JavaScript -->
-     <script>
+    <script>
       let heartCount = 0;
       let copyCount = 0;
       let coins = 100;
 
-      const heartDisplay = document.getElementById("heart-count");
-      const copyDisplay = document.getElementById("copy-count");
-      const coinDisplay = document.getElementById("coin-count");
-      const historyList = document.getElementById("history-list");
-      const clearHistoryBtn = document.getElementById("clear-history");
+      const heartDisplay = document.getElementById('heart-count');
+      const copyDisplay = document.getElementById('copy-count');
+      const coinDisplay = document.getElementById('coin-count');
+      const historyList = document.getElementById('history-list');
+      const clearHistoryBtn = document.getElementById('clear-history');
 
       // Heart click
-      document.querySelectorAll(".heart-icon").forEach((icon) => {
-        icon.addEventListener("click", () => {
-          heartCount++;
-          heartDisplay.innerText = heartCount;
-        });
+      document.querySelectorAll('.heart-icon').forEach(icon => {
+          icon.addEventListener('click', () => {
+              heartCount++;
+              heartDisplay.innerText = heartCount;
+          });
       });
 
       // Copy Button click
-      document.querySelectorAll(".copy-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const number = btn
-            .closest(".card")
-            .querySelector(".service-number").innerText;
-          navigator.clipboard.writeText(number);
-          alert(`Copied ${number} to clipboard`);
-          copyCount++;
-          copyDisplay.innerText = copyCount;
-        });
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+              const number = btn.closest('.card').querySelector('.service-number').innerText;
+              navigator.clipboard.writeText(number);
+              alert(Copied ${number} to clipboard);
+              copyCount++;
+              copyDisplay.innerText = copyCount;
+          });
       });
 
       // Call Button click
-      document.querySelectorAll(".call-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const card = btn.closest(".card");
-          const name = card.querySelector(".service-name").innerText;
-          const number = card.querySelector(".service-number").innerText;
+      document.querySelectorAll('.call-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+              const card = btn.closest('.card');
+              const name = card.querySelector('.service-name').innerText;
+              const number = card.querySelector('.service-number').innerText;
 
-          if (coins < 20) {
-            alert("You don't have enough coins to make a call.");
-            return;
-          }
+              if (coins < 20) {
+                  alert("You don't have enough coins to make a call.");
+                  return;
+              }
 
-          coins -= 20;
-          coinDisplay.innerText = coins;
-          alert`(Calling ${name} ${number}...)`;
+              coins -= 20;
+              coinDisplay.innerText = coins;
+              alert(Calling ${name} ${number}...);
 
-          const time = new Date().toLocaleTimeString();
+              const time = new Date().toLocaleTimeString();
 
-          // History item style
-          const item = document.createElement("div");
-          item.className =
-            "flex items-center justify-between bg-[gray]/10 px-3 py-2 rounded-md shadow-sm";
+              // History item style
+              const item = document.createElement('div');
+              item.className = "flex items-center justify-between bg-[gray]/10 px-3 py-2 rounded-md shadow-sm";
 
-          const left = document.createElement("div");
-          left.className = "flex items-center gap-2";
+              const left = document.createElement('div');
+              left.className = "flex items-center gap-2";
 
-          const icon = document.createElement("i");
-          // icon.className = "fa-solid fa-phone text-green-600";
+              const icon = document.createElement('i');
+              // icon.className = "fa-solid fa-phone text-green-600";
 
-          const text = document.createElement("div");
-          text.innerHTML = `<p class="font-bold">${name}</p><p class="text-xs text-gray-600">${number}</p>`;
+              const text = document.createElement('div');
+              text.innerHTML = <p class="font-bold">${name}</p><p class="text-xs text-gray-600">${number}</p>;
 
-          left.appendChild(icon);
-          left.appendChild(text);
+              left.appendChild(icon);
+              left.appendChild(text);
 
-          const timeText = document.createElement("p");
-          timeText.className = "text-xs text-gray-500";
-          timeText.innerText = time;
+              const timeText = document.createElement('p');
+              timeText.className = "text-xs text-gray-500";
+              timeText.innerText = time;
 
-          item.appendChild(left);
-          item.appendChild(timeText);
-          historyList.prepend(item);
-        });
+              item.appendChild(left);
+              item.appendChild(timeText);
+              historyList.prepend(item);
+          });
       });
 
       // Clear history section
-      clearHistoryBtn.addEventListener("click", () => {
-        historyList.innerHTML = "";
+      clearHistoryBtn.addEventListener('click', () => {
+          historyList.innerHTML = '';
       });
-    </script>    </body>
+    </script>
+  </body>
 </html>
